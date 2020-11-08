@@ -1,3 +1,8 @@
++++
+memflask = True
+isdraft = False
++++
+
 # Want a quick introduction to C?
 Keep reading for the quick crash-course to C Programming below
 Then see the [[C Gotchas wiki page|C Programming, Part 3: Common Gotchas]].

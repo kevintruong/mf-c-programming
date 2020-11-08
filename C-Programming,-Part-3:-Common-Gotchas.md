@@ -1,3 +1,8 @@
++++
+memflask = True
+isdraft = False
++++
+
 # Memory Mistakes
 
 What common mistakes do C programmers make?

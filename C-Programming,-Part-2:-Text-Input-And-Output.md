@@ -1,3 +1,8 @@
++++
+memflask = True
+isdraft = False
++++
+
 # Printing to Streams
 
 ## How do I print strings, ints, chars to the standard output stream? 

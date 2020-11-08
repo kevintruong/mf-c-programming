@@ -1,7 +1,12 @@
-## Warning - question numbers subject to change
+---
+
+isPublished: True
+
+---
+
 # Memory and Strings
-## Q1.1
-In the example below, which variables are guaranteed to print the value of zero?
+
+## Q1.1 In the example below, which variables are guaranteed to print the value of zero?
 ```C
 int a;
 static int b;
@@ -12,8 +17,9 @@ void func() {
    printf("%d %d %d %d\n",a,b,c,d);
 }
 ```
-## Q 1.2
-In the example below, which variables are guaranteed to print the value of zero?
+
+## Q 1.2 In the example below, which variables are guaranteed to print the value of zero?
+
 ```C
 void func() {
    int* ptr1 = malloc( sizeof(int) );
@@ -24,8 +30,8 @@ void func() {
    printf("%d %d %d %d\n",*ptr1,*ptr2,*ptr3,*ptr4);
 }
 ```
-## Q 1.3
-Explain the error in the following attempt to copy a string.
+## Q 1.3 Explain the error in the following attempt to copy a string.
+
 ```C
 char* copy(char*src) {
  char*result = malloc( strlen(src) ); 
@@ -33,8 +39,8 @@ char* copy(char*src) {
  return result;
 }
 ```
-## Q 1.4
-Why does the following attempt to copy a string sometimes work and sometimes fail?
+
+## Q 1.4 Why does the following attempt to copy a string sometimes work and sometimes fail?
 
 ```C
 char* copy(char*src) {

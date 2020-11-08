@@ -1,3 +1,8 @@
++++
+memflask = True
+isdraft = False
++++
+
 # Strings, Structs, and Gotcha's
 
 So what's a string?
