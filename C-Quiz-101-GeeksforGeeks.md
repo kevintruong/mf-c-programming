@@ -14,15 +14,13 @@ ii) sizeof(int*);
 iii) sizeof(int**);
 ```
 
-
 Assuming size of pointer is 4 bytes and size of int is also 4 bytes, pick the most correct answer from the given options.
 
+[ ] Only i) compile successfully and it would return size as 4
 
-[ ] Only i) would compile successfully and it would return size as 4
+[x] i), ii) and iii) compile successfully and size of each = 4 
 
-[x] i), ii) and iii) would compile successfully and size of each would be same i.e. 4 
-
-[ | i), ii) and iii) would compile successfully but the size of each would be different and would be decided at run time. 
+[ ] i), ii) and iii) wcompile successfully,but siz of eah different, decided at runtime
 
 [ ] ii) and iii) would result in compile error but i) would compile and result in size as 4. 
 
