@@ -57,20 +57,18 @@ Question 2 Explanation:
 
 Irrespective of the type of pointer, the size for a pointer is always same. So whether it’s pointer to char or pointer to float, the size of any pointer would be same. Even size of a pointer to user defined data type (e.g. struct) is also would be same.
 
-## Choose the correct statement w.r.t. above C program.
+## Choose the correct statement 
 
-```C
-#include "stdlib.h"
-int main()
-{
+```
+int main() {
  int *pInt;
  int **ppInt1;
  int **ppInt2;
- 
+
  pInt = (int*)malloc(sizeof(int));
  ppInt1 = (int**)malloc(10*sizeof(int*));
  ppInt2 = (int**)malloc(10*sizeof(int*));
- 
+
  free(pInt);
  free(ppInt1);
  free(*ppInt2);
