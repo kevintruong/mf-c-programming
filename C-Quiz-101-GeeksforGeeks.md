@@ -53,9 +53,11 @@ sizeof(pFloat);
 
 ----
 
-Question 2 Explanation: 
+Question 2 Explanation:
 
 Irrespective of the type of pointer, the size for a pointer is always same. So whether it’s pointer to char or pointer to float, the size of any pointer would be same. Even size of a pointer to user defined data type (e.g. struct) is also would be same.
+
+## Choose the correct statement w.r.t. above C program.
 
 ```C
 #include "stdlib.h"
@@ -75,8 +77,6 @@ int main()
  return 0;
 }
 ```
-
-Choose the correct statement w.r.t. above C program.
 
 [ ] malloc() for ppInt1 and ppInt2 isn’t correct. It’ll give compile time error. 
 
