@@ -1,4 +1,7 @@
-C Quiz - 101 - GeeksforGeeks
++++
+memflask = True
+isdraft = False
++++
 
 # C programming: Quizz 01 
 
@@ -24,7 +27,7 @@ Assuming size of pointer is 4 bytes and size of int is also 4 bytes, pick the mo
 [ ] ii) and iii) would result in compile error but i) would compile and result in size as 4. 
 
 ----
-Explanation: 
+Explanation:
 
 Size of all pointer types is same. And whether it is a 'pointer to char' or 'pointer to int' or 'pointer to pointer to int', the size always remain same. That's why all i), ii) and iii) would compile successfully and would result in same size value of 4.
 
