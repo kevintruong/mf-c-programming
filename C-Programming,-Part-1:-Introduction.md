@@ -12,6 +12,7 @@ Kick back relax with [Lawrence's intro videos](http://cs-education.github.io/sys
 ## How do you write a complete hello world program in C?
 
 ----
+
 ```C
 #include <stdio.h>
 int main(void) { 
@@ -141,6 +142,9 @@ gcc and clang are not total ISO-C compliant, meaning that they will let you do a
 `printf` calls `write`. `printf` includes an internal buffer so, to increase performance `printf` may not call `write` everytime you call `printf`. `printf` is a C library function. `write` is a system call and as we know system calls are expensive. On the other hand, `printf` uses a buffer which suits our needs better at that point
 
 ## How do you print out pointer values? integers? strings?
+
+----
+
 Use format specifiers "%p" for pointers, "%d" for integers and "%s" for Strings.
 A full list of all of the format specifiers is found [here](http://www.cplusplus.com/reference/cstdio/printf/)
 

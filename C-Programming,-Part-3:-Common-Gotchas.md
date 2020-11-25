@@ -72,6 +72,10 @@ int *f() {
 Automatic variables are bound to stack memory only as long as they are in scope. After they go out of scope, the data stored at their memory addresses becomes undefined. Static variables reside in the data segment, which is safe to access even when those variables are not in scope.
 
 ## `sizeof(type *)` versus `sizeof(type)` 
+
+
+---- 
+
 ```C
 struct User {
    char name[100];
@@ -80,7 +84,11 @@ typedef struct User user_t;
 
 user_t *user = (user_t *) malloc(sizeof (user_t *));
 ```
-In the above example, we needed to allocate enough bytes for the struct. Instead, we allocated enough bytes to hold a pointer. Writing to the user pointer might corrupt the heap. The correct code is shown below.
+In the above example, we needed to allocate enough bytes for the struct. 
+Instead, we allocated enough bytes to hold a pointer. 
+Writing to the user pointer might corrupt the heap. 
+The correct code is shown below.
+
 ```C
 struct User {
    char name[100];
@@ -143,7 +151,9 @@ free(p);
 //  .. later ...
 strcpy(p,"World"); 
 ```
-Accessing freed memory results in undefined behavior. A defensive programming practice is to set pointers to NULL as soon as the memory is freed, since there is no other way to reliably check if a pointer points to a valid address. The following macro accomplishes this.
+Accessing freed memory results in undefined behavior. 
+A defensive programming practice is to set pointers to NULL as soon as the memory is freed, since there is no other way to reliably check if a pointer points to a valid address. 
+The following macro accomplishes this.
 
 ```C
 #define safer_free(p) {free(p); (p) = NULL;}
@@ -171,7 +181,8 @@ int main(void){
 ```
 ----
 
-Since `getline` reuses a buffer, all pointers in the `strings` array are actually pointing to the same memory. We can fix this by setting the assignment of `strings[i]` to a deep copy of the buffer.
+Since `getline` reuses a buffer, all pointers in the `strings` array are actually pointing to the same memory.
+We can fix this by setting the assignment of `strings[i]` to a deep copy of the buffer.
 ```C
    strings[i] = getline(&line, &linecap, stdin) >= 0 ? strdup(line) : "";
 ```
@@ -189,9 +200,13 @@ case 2: printf("Me too\n");
 case 3: printf("Me three\n");
 }
 ```
+
 ----
 
-Case statements without a break will just continue onto the code of the next case statement. The correct code is shown below. The break for the last statement is unnecessary because there are no more cases to be executed after the last one.
+Case statements without a break will just continue onto the code of the next case statement. 
+The correct code is shown below. 
+The break for the last statement is unnecessary because there are no more cases to be executed after the last one.
+
 ```C
 int flag = 1; // Will print only "I'm printed\n"
 switch (flag) {
