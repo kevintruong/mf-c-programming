@@ -49,17 +49,26 @@ char str[]={'A','B','C','\0'};
 
 ----
 
-A pointer refers to a memory address. The type of the pointer is useful - it tells the compiler how many bytes need to be read/written. You can declare a pointer as follows.
-```C
+A pointer refers to a memory address. The type of the pointer is useful 
+It tells the compiler how many bytes need to be read/written. 
+You can declare a pointer as follows.
+
+```
 int *ptr1;
 char *ptr2;
 ```
 
-Due to C's grammar, an `int*` or any pointer is not actually its own type. You have to precede each pointer variable with an asterisk. As a common gotcha, the following
-```C
+Due to C's grammar, an `int*` or any pointer is not actually its own type. 
+You have to precede each pointer variable with an asterisk. As a common gotcha, the following
+
+```
 int* ptr3, ptr4;
 ```
-Will only declare `*ptr3` as a pointer. `ptr4` will actually be a regular int variable. To fix this declaration, keep the `*` preceding to the pointer
+
+Will only declare `*ptr3` as a pointer. 
+`ptr4` will actually be a regular int variable. 
+To fix this declaration, keep the `*` preceding to the pointer
+
 ```C
 int *ptr3, *ptr4;
 ```

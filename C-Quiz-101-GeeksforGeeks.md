@@ -5,7 +5,7 @@ isdraft = False
 
 # C programming: Quizz 01 
 
-## Question 1: Suppose that in a C program snippet, followings statements are used.
+## Suppose that in a C program snippet, followings statements are used.
 
 
 ```c
@@ -53,7 +53,7 @@ sizeof(pFloat);
 
 ----
 
-Question 2 Explanation:
+Explanation:
 
 Irrespective of the type of pointer, the size for a pointer is always same. So whether it’s pointer to char or pointer to float, the size of any pointer would be same. Even size of a pointer to user defined data type (e.g. struct) is also would be same.
 
@@ -88,4 +88,8 @@ int main() {
 
 Explanation:
 
-ppInt2 is pointer to pointer to int. *ppInt2 is pointer to int. So long as the argument of free() is pointer, there's no issue. That's why B) and C) both are not correct. Allocation of both ppInt1 and ppInt2 is fine as per their data type. So A) is also not correct. The correct statement is D).
+ppInt2 is pointer to pointer to int. *ppInt2 is pointer to int. 
+So long as the argument of free() is pointer, there's no issue. 
+That's why B) and C) both are not correct. 
+Allocation of both ppInt1 and ppInt2 is fine as per their data type. 
+So A) is also not correct. The correct statement is D).

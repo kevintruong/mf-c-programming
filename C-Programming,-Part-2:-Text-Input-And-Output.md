@@ -134,7 +134,10 @@ int main(){
 
 Use `scanf` (or `fscanf` or `sscanf`) to get input from the default input stream, an arbitrary file stream or a C string respectively.
 It's a good idea to check the return value to see how many items were parsed.
-`scanf` functions require valid pointers. It's a common source of error to pass in an incorrect pointer value. For example,
+`scanf` functions require valid pointers. 
+It's a common source of error to pass in an incorrect pointer value. 
+
+For example,
 ```C
 int *data = (int *) malloc(sizeof(int));
 char *line = "v 10";
@@ -143,7 +146,10 @@ char type;
 int ok = 2 == sscanf(line, "%c %d", &type, &data); // pointer error
 ```
 We wanted to write the character value into c and the integer value into the malloc'd memory.
-However, we passed the address of the data pointer, not what the pointer is pointing to! So `sscanf` will change the pointer itself. i.e. the pointer will now point to address 10 so this code will later fail e.g. when free(data) is called.
+However, we passed the address of the data pointer, not what the pointer is pointing to! 
+So `sscanf` will change the pointer itself. 
+i.e. the pointer will now point to address 10 so this code will later fail 
+e.g. when free(data) is called.
  
 ## How do I stop scanf from causing a buffer overflow?
 
@@ -180,7 +186,6 @@ char *fgets (char *str, int num, FILE *stream);
 
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 ```
-
 Here's a simple, safe way to read a single line. Lines longer than 9 characters will be truncated:
 ```C
 char buffer[10];
