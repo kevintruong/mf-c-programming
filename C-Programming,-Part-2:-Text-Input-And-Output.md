@@ -5,13 +5,16 @@ isdraft = False
 
 # Printing to Streams
 
-## How do I print strings, ints, chars to the standard output stream? 
+## How do I print strings, ints, chars to the standard output stream?
 
 ----
 
-Use `printf`. The first parameter is a format string that includes placeholders for the data to be printed. Common format specifiers are `%s` treat the argument as a c string pointer, keep printing all characters until the NULL-character is reached; `%d` print the argument as an integer; `%p` print the argument as a memory address.
+Use `printf`. The first parameter is a format string that includes placeholders for the data to be printed. Common
+format specifiers are `%s` treat the argument as a c string pointer, keep printing all characters until the
+NULL-character is reached; `%d` print the argument as an integer; `%p` print the argument as a memory address.
 
 A simple example is shown below:
+
 ```C
 char *name = ... ; int score = ...;
 printf("Hello %s, your result is %d\n", name, score);
@@ -20,7 +23,8 @@ printf("Debug: The string and int are stored at: %p and %p\n", name, &score );
 // We need "&" to get the address of the int variable
 ```
 
-By default, for performance, `printf` does not actually write anything out (by calling write) until its buffer is full or a newline is printed. 
+By default, for performance, `printf` does not actually write anything out (by calling write) until its buffer is full
+or a newline is printed.
 
 ## How else can I print strings and single characters?
 
@@ -40,33 +44,39 @@ Where _file_ is either predefined 'stdout' 'stderr' or a FILE pointer that was r
 ----
 
 Yes!
-Just use `dprintf(int fd, char* format_string, ...);` Just remember the stream may be buffered, so you will need to assure that the data is written to the file descriptor.
+Just use `dprintf(int fd, char* format_string, ...);` Just remember the stream may be buffered, so you will need to
+assure that the data is written to the file descriptor.
 
 ## How do I print data into a C string?
 
 ----
 
 Use `sprintf` or better `snprintf`.
+
 ```C
 char result[200];
 int len = snprintf(result, sizeof(result), "%s:%d", name, score);
 ```
-~~snprintf returns the number of characters written excluding the terminating byte. In the above example, this would be a maximum of 199.~~
-The return value of snprintf is the length that would have been written given enough space, excluding the ending NULL byte.
+
+~~snprintf returns the number of characters written excluding the terminating byte. In the above example, this would be
+a maximum of 199.~~
+The return value of snprintf is the length that would have been written given enough space, excluding the ending NULL
+byte.
+
 ```C
 char x[5];
 int size = snprintf(x, 5, "%s%s%s", "12", "34", "56"); // writes "1234" + null
 printf("%d\n", size); // output 6
 ```
+
 Source: [this StackOverflow post](https://stackoverflow.com/questions/12746885/why-use-asprintf) and man page.
 
 ## What if I really really want `printf` to call `write` without a newline?
 
 ----
 
-Use `fflush( FILE* inp )`.
-The contents of the file will be written.
-If I wanted to write "Hello World" with no newline, I could write it like this.
+Use `fflush( FILE* inp )`. The contents of the file will be written. If I wanted to write "Hello World" with no newline,
+I could write it like this.
 
 ```C
 int main(){
@@ -80,7 +90,9 @@ int main(){
 
 ----
 
-Let's say that you have a function call that just failed (because you checked the man page and it is a failing return code). `perror(const char* message)` will print the English version of the error to stderr
+Let's say that you have a function call that just failed (because you checked the man page and it is a failing return
+code). `perror(const char* message)` will print the English version of the error to stderr
+
 ```C
 int main(){
     int ret = open("IDoNotExist.txt", O_RDONLY);
@@ -96,9 +108,11 @@ int main(){
 
 ----
 
-Use `long int strtol(const char *nptr, char **endptr, int base);` or `long long int strtoll(const char *nptr, char **endptr, int base);`.
+Use `long int strtol(const char *nptr, char **endptr, int base);`
+or `long long int strtoll(const char *nptr, char **endptr, int base);`.
 
-What these functions do is take the pointer to your string `*nptr` and a `base` (ie binary, octal, decimal, hexadecimal etc) and an optional pointer `endptr` and returns a parsed value.
+What these functions do is take the pointer to your string `*nptr` and a `base` (ie binary, octal, decimal, hexadecimal
+etc) and an optional pointer `endptr` and returns a parsed value.
 
 ```C
 int main(){
@@ -110,10 +124,10 @@ int main(){
 ```
 
 Be careful though!
-Error handling is tricky because the function won't return an error code.
-If you give it a string that is not a number it will return 0. This means you cant differentiate between a valid "0" and an invalid string.
-See the man page for more details on strol behavior with invalid and out of bounds values.
-A safer alternative is use to `sscanf` (and check the return value).
+Error handling is tricky because the function won't return an error code. If you give it a string that is not a number
+it will return 0. This means you cant differentiate between a valid "0" and an invalid string. See the man page for more
+details on strol behavior with invalid and out of bounds values. A safer alternative is use to `sscanf` (and check the
+return value).
 
 ```C
 int main(){
@@ -132,12 +146,12 @@ int main(){
 
 ----
 
-Use `scanf` (or `fscanf` or `sscanf`) to get input from the default input stream, an arbitrary file stream or a C string respectively.
-It's a good idea to check the return value to see how many items were parsed.
-`scanf` functions require valid pointers. 
-It's a common source of error to pass in an incorrect pointer value. 
+Use `scanf` (or `fscanf` or `sscanf`) to get input from the default input stream, an arbitrary file stream or a C string
+respectively. It's a good idea to check the return value to see how many items were parsed.
+`scanf` functions require valid pointers. It's a common source of error to pass in an incorrect pointer value.
 
 For example,
+
 ```C
 int *data = (int *) malloc(sizeof(int));
 char *line = "v 10";
@@ -145,17 +159,18 @@ char type;
 // Good practice: Check scanf parsed the line and read two values:
 int ok = 2 == sscanf(line, "%c %d", &type, &data); // pointer error
 ```
-We wanted to write the character value into c and the integer value into the malloc'd memory.
-However, we passed the address of the data pointer, not what the pointer is pointing to! 
-So `sscanf` will change the pointer itself. 
-i.e. the pointer will now point to address 10 so this code will later fail 
+
+We wanted to write the character value into c and the integer value into the malloc'd memory. However, we passed the
+address of the data pointer, not what the pointer is pointing to!
+So `sscanf` will change the pointer itself. i.e. the pointer will now point to address 10 so this code will later fail
 e.g. when free(data) is called.
- 
+
 ## How do I stop scanf from causing a buffer overflow?
 
 ----
 
-The following code assumes the scanf won't read more than 10 characters (including the terminating byte) into the buffer.
+The following code assumes the scanf won't read more than 10 characters (including the terminating byte) into the
+buffer.
 
 ```C
 char buffer[10];
@@ -173,26 +188,35 @@ scanf("%9s", buffer); // reads up to 9 charactes from input (leave room for the 
 
 ----
 
-The following code is vulnerable to buffer overflow. It assumes or trusts that the input line will be no more than 10 characters, including the terminating byte.
+The following code is vulnerable to buffer overflow. It assumes or trusts that the input line will be no more than 10
+characters, including the terminating byte.
+
 ```C
 char buf[10];
 gets(buf); // Remember the array name means the first byte of the array
 ``` 
-`gets` is deprecated in C99 standard and has been removed from the latest C standard (C11). Programs should use `fgets` or `getline` instead. 
+
+`gets` is deprecated in C99 standard and has been removed from the latest C standard (C11). Programs should use `fgets`
+or `getline` instead.
 
 Where each has the following structure respectively:
+
 ```C 
 char *fgets (char *str, int num, FILE *stream); 
 
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 ```
+
 Here's a simple, safe way to read a single line. Lines longer than 9 characters will be truncated:
+
 ```C
 char buffer[10];
 char *result = fgets(buffer, sizeof(buffer), stdin);
 ```
-The result is NULL if there was an error or the end of the file is reached.
-Note, unlike `gets`,  `fgets` copies the newline into the buffer, which you may want to discard-
+
+The result is NULL if there was an error or the end of the file is reached. Note, unlike `gets`,  `fgets` copies the
+newline into the buffer, which you may want to discard-
+
 ```C
 if (!result) { return; /* no data - don't read the buffer contents */}
 
