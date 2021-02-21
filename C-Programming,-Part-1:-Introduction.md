@@ -1,5 +1,5 @@
 +++
-memflask = True
+noatcards = true
 isdraft = False
 +++
 
@@ -30,8 +30,8 @@ int main(void) {
 We're lazy! We don't want to declare the `printf` function. It's already done for us inside the file '`stdio.h`'.
 The `#include` includes the text of the file as part of our file to be compiled.
 
-Specifically, the `#include` directive takes the file `stdio.h` (which stands for **st**an**d**ard **i**nput and **o**
-utput) located somewhere in your operating system, copies the text, and substitutes it where the `#include` was.
+Specifically, the `#include` directive takes the file `stdio.h` (which stands for standard input and output) located
+somewhere in your operating system, copies the text, and substitutes it where the `#include` was.
 
 ## How are C strings represented?
 

@@ -1,5 +1,5 @@
 +++
-memflask = True
+noatcards = true
 isdraft = False
 type = "quiz"
 +++

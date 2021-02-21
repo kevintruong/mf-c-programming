@@ -1,5 +1,5 @@
 +++
-memflask = true
+noatcards = true
 isdraft = false
 +++
 
@@ -123,10 +123,11 @@ char* upped = strdup("strtok,is,tricky,,,!!");
 
 ## Memory Movement: `memcpy` and `memmove`
 
+Why are `memcpy` and `memmove` both in `<string.h>`?
+
 ----
 
-Why are `memcpy` and `memmove` both in `<string.h>`? Because strings are essentially raw memory with a null byte at the
-end of them!
+Because strings are essentially raw memory with a null byte at the end of them!
 
 `void *memcpy(void *dest, const void *src, size_t n)` moves `n` bytes starting at `src` to `dest`. **Be careful**, there
 is undefined behavior when the memory regions overlap. This is one of the classic works on my machine examples because
@@ -140,9 +141,10 @@ then it is guaranteed that all the bytes will get copied over correctly.
 
 ----
 
-In low-level terms, a struct is just a piece of contiguous memory, nothing more. Just like an array, a struct has enough
-space to keep all of its members. But unlike an array, it can store different types. Consider the contact struct
-declared above
+In low-level terms, a struct is just a piece of contiguous memory, nothing more.
+
+Just like an array, a struct has enough space to keep all of its members. But unlike an array, it can store different
+types. Consider the contact struct declared above
 
 ```C
 struct contact {
